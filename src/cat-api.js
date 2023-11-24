@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 export const ENDPOINT = 'https://api.thecatapi.com/v1';
 export const API_KEY =
   'live_BLGKcai2NyLETr1i4Pw6Nrey2OIBQv0uX9xVSOXPljLZZydAmezbW4wIaI7Ljqok';
@@ -13,7 +14,7 @@ export function fetchBreeds() {
     .then(response => response.data)
 
     .catch(error => {
-      console.error('Failed to fetch breeds', error);
+      Notiflix.Notify.failure('Failed to fetch breeds', error);
       throw error;
     });
 }
@@ -28,6 +29,6 @@ export function fetchCatByBreed(breedId) {
       return response.data;
     })
     .catch(error => {
-      console.error('Error fetching cat information:', error);
+      Notiflix.Notify.failure('Error fetching cat information:', error);
     });
 }
