@@ -9,21 +9,10 @@ img {
   gap: 20px;
   padding: 30px;
 }
-.breed-select {
-  border: 1px solid #ccc;
-  padding: 8px;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
-  font-size: 14px;
-  margin-left: 21px;
-  width: 165px;
-  cursor: pointer;
-}
 
-.breed-select li {
-  padding: 8px;
-  cursor: pointer;
+.ss-main {
+  width: 15%;
+  margin-bottom: 10px;
 }
 
 .cat-details {
