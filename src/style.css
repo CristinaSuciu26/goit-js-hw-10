@@ -50,6 +50,8 @@ img {
   position: relative;
   padding: 20px;
   max-width: 15%;
+  margin-top: -30px;
+  margin-left: -15px;
 }
 .loader:after {
   content: 'Loading data, please wait...';
