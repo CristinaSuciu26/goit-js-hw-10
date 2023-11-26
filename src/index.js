@@ -62,45 +62,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to display cat information in the UI
   function displayCatInfo(catInfo) {
-    if (catInfo && catInfo.length > 0) {
-      const { url, breeds } = catInfo[0];
-
-      if (breeds && breeds.length > 0) {
-        const { name, description, temperament } = breeds[0];
-
-        // Generate HTML markup for displaying cat information
-
-        const catMarkup = `
-              <div class="cat-info">
-                <img src="${url}" alt="Cat Image" class="cat-image">
-                <div class="cat-details">
-                  <p class="cat-name"><strong>${name}</strong></p>
-                  <p class="cat-text" >${description}</p>
-                  <p><strong>Temperament:</strong> ${temperament}</p>
-                </div>
-              </div>`;
-
-        // Update the cat information container and display it
-
-        catInfoDiv.innerHTML = catMarkup;
-        catInfoDiv.style.display = 'block';
-        loader.style.display = 'none';
-      } else {
-        Notiflix.Notify.failure('Invalid cat breed data received:', catInfo);
-        catInfoDiv.innerHTML =
-          '<p>No information available for this cat breed.</p>';
-      }
-    } else {
-      Notiflix.Notify.failure('Invalid cat data received:', catInfo);
-      catInfoDiv.innerHTML = '<p>No information available for this cat.</p>';
-      errorElement.style.display = 'block';
-      loader.style.display = 'none';
+    if (!(catInfo && catInfo.length > 0)) {
+      // Handle error if catInfo is invalid or empty
+      return handleError();
     }
+
+    const { url, breeds } = catInfo[0];
+
+    if (!(breeds && breeds.length > 0)) {
+      // Handle error if breeds is invalid or empty
+      return handleError();
+    }
+
+    const { name, description, temperament } = breeds[0];
+
+    // Generate HTML markup for displaying cat information
+    const catMarkup = `
+      <div class="cat-info">
+        <img src="${url}" alt="Cat Image" class="cat-image">
+        <div class="cat-details">
+          <p class="cat-name"><strong>${name}</strong></p>
+          <p class="cat-text">${description}</p>
+          <p><strong>Temperament:</strong> ${temperament}</p>
+        </div>
+      </div>`;
+
+    // Update the cat information container and display it
+    catInfoDiv.innerHTML = catMarkup;
+    catInfoDiv.style.display = 'block';
+    loader.style.display = 'none';
   }
 
   // Function to handle errors during API calls
   function handleError(error) {
-    Notiflix.Notify.failure('Error fetching cat information:', error);
+    Notiflix.Notify.failure('Error fetching cat information', error);
     loader.style.display = 'none';
     errorElement.style.display = 'block';
   }
