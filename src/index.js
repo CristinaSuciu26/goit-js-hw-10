@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to initialize the page
   function initializePage() {
-    loader.style.display = 'inline-block';
+    loader.style.display = 'flex';
     errorElement.style.display = 'none';
     fetchAndPopulateBreeds();
   }
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .finally(() => {
         loader.style.display = 'none';
-        select.style.display = 'inline-block';
+        select.style.display = 'flex';
 
         new SlimSelect({
           select: '.breed-select',
